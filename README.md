@@ -57,8 +57,8 @@ When the machine is up, do SSH:
 Then just proceed with the installation of Java, Docker and Docker-compose
 ```sh
 :~$ sudo apt-get update && sudo apt-get install default-jdk
-:~$ terraform apply
-:~$ terraform apply
+:~$ sudo apt-get install docker.io
+:~$ sudo apt-get install docker-compose
 ```
 #### 2. Clone this repository
 
@@ -74,12 +74,12 @@ voting-totalizer-producer-service:~$ ./gradlew clean build
 #### 4. Increase the virtual memory if needed
 Elasticsearch requires that the value of the max_map_count variable be at least 262144.
 ```sh
-:~$ sysctl -w vm.max_map_count=262144
+:~$ sudo sysctl -w vm.max_map_count=262144
 ```
 #### 5. Run docker-compose
 This command will raise the containers needed to run the entire application.
 ```sh
-:~$ docker-compose up
+:~$ sudo docker-compose up
 ```
 ## Access applications
 It will be possible to access the applications, for example:
