@@ -91,10 +91,6 @@ It will be possible to access the applications, for example:
 ```sh
 <ec2_ip>:5601
 ```
-#### To access the RabbitMQ UI
-```sh
-<ec2_ip>:15672
-```
 ## Improvements in this project
 Some improvements this project could have
 *   Adds a centralized configuration for not to keep repeated attributes in different applications;
