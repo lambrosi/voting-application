@@ -1,0 +1,34 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: voting-totalizer-producer-service
+  redis:
+    host: redis
+    port: 6379
+    password: redis123
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+app:
+  url:
+    voting-service: voting-service:8080
+  cron:
+    send-totalizer: 0 */5 * * * *
+  messaging:
+    routing-key: '#'
+    totalizer:
+      exchange: totalizer-exchange
+      queue: totalizer-queue
+    totalizer-return:
+      exchange: totalizer-return-exchange
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} - %-4level [${spring.application.name}] %logger{36} - %m%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} - %-4level [${spring.application.name}] %logger{36} - %m%n'
+  file: /var/log/voting-totalizer-producer-service.log
