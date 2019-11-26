@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: voting-service
+
+  cache:
+    type: redis
+    redis:
+      cacheNullValues: false
+      timeToLive: 600000
+      useKeyPrefix: true
+
+  datasource:
+    url: jdbc:mysql://mysql:3306/voting
+    username: root
+    password: 1234
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+  liquibase:
+    changeLog: classpath:/db/changelog/changelog.xml
+
+  redis:
+    host: redis
+    port: 6379
+    password: redis123
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        concurrency: 2
+        max-concurrency: 4
+        prefetch: 15
+
+app:
+  url:
+    user-info-service: https://user-info.herokuapp.com
+  messaging:
+    totalizer-return:
+      exchange: totalizer-return-exchange
+      queue: totalizer-return-queue
+      routing-key: '#'
+
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} - %-4level [${spring.application.name}] %logger{36} - %m%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} - %-4level [${spring.application.name}] %logger{36} - %m%n'
+  file: /var/log/voting-service.log
