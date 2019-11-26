@@ -50,6 +50,7 @@ public class SessionService {
     }
 
     public void markSessionAsTotalizerSent(Long sessionId) {
+        LOGGER.debug("Saving that the session {} had its totalizers sent", sessionId);
         Session session = this.findById(sessionId);
         session.setTotalizerSent(Boolean.TRUE);
 
