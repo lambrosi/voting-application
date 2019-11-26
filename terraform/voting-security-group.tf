@@ -37,8 +37,8 @@ resource "aws_security_group" "voting-sg" {
   }
 
   ingress {
-    from_port   = 5672
-    to_port     = 5672
+    from_port   = 15672
+    to_port     = 15672
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
